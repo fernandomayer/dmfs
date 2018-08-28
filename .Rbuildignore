@@ -1,0 +1,12 @@
+README.Rmd
+README.md
+Rplots.pdf
+.gitignore
+.Rprofile
+^\.travis\.yml$
+^\.git$
+^vignette$
+^downloads$
+^playground$
+^data-raw$
+buildPkg.R

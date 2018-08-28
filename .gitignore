@@ -1,0 +1,7 @@
+.Rprofile
+Rplots.pdf
+vignette/
+# Emacs temp files
+\#*\#
+.\#*
+

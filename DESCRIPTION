@@ -1,0 +1,10 @@
+Package: dmfs
+Title: Dynamic Models for Fisheries Science
+Version: 0.0.1
+Authors@R: person("Fernando", "Mayer", email = "fernando.mayer@ufpr.br", role = c("aut", "cre"))
+Description: Simulate, build and fit biomass dynamic models.
+Depends: R (>= 3.5.0)
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.0
