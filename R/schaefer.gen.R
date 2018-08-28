@@ -10,8 +10,8 @@
 ##' @return A vector of biomass values with the same length as \code{C}
 ##' @author Fernando Mayer
 ##' @examples
-##' B <- schaefer.gen(Binit = 2500, r = 0.8, K = 3000,
-##' C = runif(20, 70, 900))
+##' B <- schaefer.gen(Binit = 2500, r = 0.8, K = 3000, C = runif(20, 70,
+##'     900))
 ##' plot(B, type = "l")
 ##' @export
 schaefer.gen <- function(Binit, r, K, C){

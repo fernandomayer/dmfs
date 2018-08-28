@@ -26,8 +26,8 @@ Based in a set of parameters, generate a sequence of biomass values
     based on the Schaefer model.
 }
 \examples{
-B <- schaefer.gen(Binit = 2500, r = 0.8, K = 3000,
-C = runif(20, 70, 900))
+B <- schaefer.gen(Binit = 2500, r = 0.8, K = 3000, C = runif(20, 70,
+    900))
 plot(B, type = "l")
 }
 \author{
