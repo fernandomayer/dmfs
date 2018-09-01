@@ -10,3 +10,16 @@
 #'   \item{CPUE}{CPUE in t/(fisherman/day)}
 #' }
 "simple"
+
+#' Albacore data
+#'
+#' South Atlantic albacore data from Millar & Meyer (2001).
+#'
+#' @format A data frame with 23 rows and 4 variables:
+#' \describe{
+#'   \item{Year}{Year of catch}
+#'   \item{C}{Catches}
+#'   \item{I}{CPUE}
+#'   \item{P}{P = B/K}
+#' }
+"albacore"
