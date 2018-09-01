@@ -8,5 +8,6 @@ Rplots.pdf
 ^vignette$
 ^downloads$
 ^playground$
+^examples$
 ^data-raw$
 buildPkg.R
