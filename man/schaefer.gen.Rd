@@ -4,7 +4,7 @@
 \alias{schaefer.gen}
 \title{Generate biomass values form Schaefer's model}
 \usage{
-schaefer.gen(r, K, C, sigmaproc)
+schaefer.gen(r, K, C, sd.proc)
 }
 \arguments{
 \item{r}{Intrinsic growth rate}
@@ -14,7 +14,7 @@ used as starting value for biomass \eqn{B_1} (plus error).}
 
 \item{C}{Observed catch data}
 
-\item{sigmaproc}{Process standard deviation.}
+\item{sd.proc}{Process standard deviation.}
 }
 \value{
 A vector of biomass values with the same length as \code{C}
@@ -28,8 +28,8 @@ Based in a set of parameters, generate a sequence of biomass values
 }
 \examples{
 set.seed(1)
-B <- schaefer.gen(r = 0.8, K = 3000, C = runif(20, 70,
-    900), sigmaproc = 0.05)
+B <- schaefer.gen(r = 0.8, K = 3000,
+                  C = runif(20, 70, 900), sd.proc = 0.05)
 plot(B, type = "l")
 }
 \author{

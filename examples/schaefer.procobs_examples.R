@@ -8,7 +8,7 @@ plot(sim)
 
 ## Generate initial biomass values with this set of parameters
 Bobs <- schaefer.gen(r = pars["r"], K = pars["K"],
-                     C = sim$C, sigmaproc = pars["sd.proc"])
+                     C = sim$C, sd.proc = pars["sd.proc"])
 plot(Bobs, type = "l")
 points(sim$I.procobs/pars["q"])
 
