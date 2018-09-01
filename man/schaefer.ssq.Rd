@@ -4,13 +4,11 @@
 \alias{schaefer.ssq}
 \title{Schaefer sum of squares}
 \usage{
-schaefer.ssq(par, Binit, C, I)
+schaefer.ssq(par, C, I)
 }
 \arguments{
 \item{par}{A vector in the following order: \code{r}, \code{K} and
 \code{q}}
-
-\item{Binit}{Initial biomass}
 
 \item{C}{Observed catch data}
 
@@ -32,10 +30,11 @@ This functions is built to be passed to an optimizarion function
 }
 \examples{
 data(simple)
-schaefer.ssq(par = c(r = 1, K = 3000, q = 0.001), Binit = 2500, C =
+schaefer.ssq(par = c(r = 1, K = 3000, q = 0.001), C =
     simple$Catch, I = simple$CPUE)
-mod <- nlminb(c(r = 1, K = 3000, q = 0.001), schaefer.ssq, Binit =
-    2500, C = simple$Catch, I = simple$CPUE, lower = 0, upper = Inf)
+mod <- nlminb(c(r = 1, K = 3000, q = 0.001), schaefer.ssq,
+              C = simple$Catch, I = simple$CPUE,
+              lower = 0, upper = Inf)
 mod$par
 format(mod$par, digits = 4, scientific = FALSE)
 }
