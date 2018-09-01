@@ -19,6 +19,7 @@
 ##' @return The negative log-likelihood value for a given set of
 ##'     parameters and data.
 ##' @author Fernando Mayer
+##' @example playground/schaefer.procobs_examples.R
 ##' @importFrom stats dnorm
 ##' @export
 schaefer.procobs <- function(par, B, I, C){
