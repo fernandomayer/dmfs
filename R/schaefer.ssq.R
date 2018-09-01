@@ -16,14 +16,14 @@
 ##' @author Fernando Mayer
 ##' @examples
 ##' data(simple)
-##' schaefer.ss(par = c(r = 1, K = 3000, q = 0.001), Binit = 2500, C =
+##' schaefer.ssq(par = c(r = 1, K = 3000, q = 0.001), Binit = 2500, C =
 ##'     simple$Catch, I = simple$CPUE)
-##' mod <- nlminb(c(r = 1, K = 3000, q = 0.001), schaefer.ss, Binit =
+##' mod <- nlminb(c(r = 1, K = 3000, q = 0.001), schaefer.ssq, Binit =
 ##'     2500, C = simple$Catch, I = simple$CPUE, lower = 0, upper = Inf)
 ##' mod$par
 ##' format(mod$par, digits = 4, scientific = FALSE)
 ##' @export
-schaefer.ss <- function(par, Binit, C, I){
+schaefer.ssq <- function(par, Binit, C, I){
     r <- par[1]
     K <- par[2]
     q <- par[3]
