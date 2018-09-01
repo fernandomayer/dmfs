@@ -37,6 +37,7 @@ A data frame (also with class \code{dmfs}) with 7 columns:
 \item{I.procobs}{Simulated CPUE with both process and observation
     errors}
 }
+The object also contains the parameter values used as attributes.
 }
 \description{
 Simulate a complete set of biomass dynamic data
@@ -86,7 +87,8 @@ used to determine biomass, and biomass to determine CPUEs.
 set.seed(1)
 sim <- simdata()
 str(sim)
-plot(sim, qscale = 0.01)
+attr(sim, "pars")
+plot(sim)
 ## Using non-random effort
 n <- 100
 eff <- c(
@@ -96,7 +98,7 @@ eff <- c(
     seq(20, 1, length = 25)
 )
 sim <- simdata(n = n, eff = eff, eff.random = FALSE)
-plot(sim, qscale = 0.01)
+plot(sim)
 }
 \author{
 Fernando Mayer

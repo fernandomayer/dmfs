@@ -4,24 +4,28 @@
 ##'     \code{simdata()}.
 ##' @title Plot simulated data
 ##' @param x An object of class \code{dmfs}.
-##' @param qscale The parameter \eqn{q} (catchability coefficient). You
-##'     may use the same value used for the simulation, so that biomass
-##'     and CPUE values will be in the same scale (just for
-##'     visualization).
+##' @param qscale The parameter \eqn{q} (catchability coefficient), used
+##'     to scale CPUE values so that they are at the same scale as
+##'     biomass values (this is just for visualization purposes). If
+##'     nothing is specified, then by default it will be used the same
+##'     value for \code{q} used in the \code{simdata()} function
+##'     (recommended).
 ##' @param ... Not used.
 ##' @return Plots of simulated dynamics.
 ##' @author Fernando Mayer
 ##' @examples
 ##' set.seed(1)
-##' sim <- simdata(q = 0.01)
-##' plot(sim, qscale = 0.01)
+##' sim <- simdata()
+##' plot(sim)
 ##' @import graphics
 ##' @export
 plot.dmfs <- function(x, qscale, ...){
     op <- par(no.readonly = TRUE)
-    ## Scaling factor for observations
-    ## plot <- function(x, qscale) UseMethod("plot")
-    q <- qscale
+    ## Scaling factor for observations. If qscale is not specified, then
+    ## use q from attributes of x
+    q <- ifelse(missing(qscale),
+                attr(x, "pars")["q"],
+                qscale)
     ## Scale columns that start with I (observations)
     x[, grep("^I", names(x))] <- x[, grep("^I", names(x))]/q
     with(x,{

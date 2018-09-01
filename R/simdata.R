@@ -60,12 +60,14 @@
 ##' \item{I.procobs}{Simulated CPUE with both process and observation
 ##'     errors}
 ##' }
+##' The object also contains the parameter values used as attributes.
 ##' @examples
 ##' ## Using default arguments
 ##' set.seed(1)
 ##' sim <- simdata()
 ##' str(sim)
-##' plot(sim, qscale = 0.01)
+##' attr(sim, "pars")
+##' plot(sim)
 ##' ## Using non-random effort
 ##' n <- 100
 ##' eff <- c(
@@ -75,13 +77,15 @@
 ##'     seq(20, 1, length = 25)
 ##' )
 ##' sim <- simdata(n = n, eff = eff, eff.random = FALSE)
-##' plot(sim, qscale = 0.01)
+##' plot(sim)
 ##' @author Fernando Mayer
 ##' @importFrom stats rnorm
 ##' @export
 simdata <- function(n = 30, r = 0.5, K = 1000, q = 0.01,
                     sd.obs = 0.1, sd.proc = 0.05,
                     eff = 1:20, eff.random = TRUE){
+    ## Get the list of arguments to set as attributes
+    args <- as.list(environment())[1:6]
     ## Error handling
     if(isFALSE(eff.random) & length(eff) != n){
         stop("n and eff must have the same length")
@@ -120,5 +124,6 @@ simdata <- function(n = 30, r = 0.5, K = 1000, q = 0.01,
     ## Data frame to return
     out <- data.frame(f, C, I, B, I.obs, B.proc, I.procobs)
     class(out) <- c("dmfs", "data.frame")
+    attr(out, "pars") <- unlist(args)
     return(out)
 }

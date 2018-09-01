@@ -9,10 +9,12 @@
 \arguments{
 \item{x}{An object of class \code{dmfs}.}
 
-\item{qscale}{The parameter \eqn{q} (catchability coefficient). You
-may use the same value used for the simulation, so that biomass
-and CPUE values will be in the same scale (just for
-visualization).}
+\item{qscale}{The parameter \eqn{q} (catchability coefficient), used
+to scale CPUE values so that they are at the same scale as
+biomass values (this is just for visualization purposes). If
+nothing is specified, then by default it will be used the same
+value for \code{q} used in the \code{simdata()} function
+(recommended).}
 
 \item{...}{Not used.}
 }
@@ -28,8 +30,8 @@ Use this function to visualize data simulated with
 }
 \examples{
 set.seed(1)
-sim <- simdata(q = 0.01)
-plot(sim, qscale = 0.01)
+sim <- simdata()
+plot(sim)
 }
 \author{
 Fernando Mayer
