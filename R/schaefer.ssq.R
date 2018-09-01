@@ -27,7 +27,7 @@ schaefer.ssq <- function(par, C, I){
     r <- par[1]
     K <- par[2]
     q <- par[3]
-    Bpred <- schaefer.gen(r = r, K = K, C = C, sigmaproc = 0)
+    Bpred <- schaefer.gen(r = r, K = K, C = C, sd.proc = 0)
     Ipred <- q * Bpred
     ss <- sum((I - Ipred)^2)
     return(ss)

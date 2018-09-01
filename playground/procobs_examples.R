@@ -8,7 +8,7 @@ plot(sim)
 
 ## Generate initial biomass values with this set of parameters
 Bobs <- schaefer.gen(r = pars["r"], K = pars["K"],
-                     C = sim$C, sigmaproc = pars["sd.proc"])
+                     C = sim$C, sd.proc = pars["sd.proc"])
 plot(Bobs, type = "l")
 points(sim$I.procobs/pars["q"])
 
@@ -27,7 +27,6 @@ fit$par
 format(fit$par, digits = 4, scientific = FALSE)
 
 ## Using bbmle
-\dontrun{
 library(bbmle)
 parnames(schaefer.procobs) <- names(pars)
 fit.mle <- mle2(
@@ -51,4 +50,3 @@ format(fit.mle@coef, digits = 4, scientific = FALSE)
 prof <- profile(fit.mle)
 confint(prof)
 plot(prof)
-}

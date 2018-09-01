@@ -7,18 +7,18 @@
 ##' @param K Population's carrying capacity. This value will also be
 ##'     used as starting value for biomass \eqn{B_1} (plus error).
 ##' @param C Observed catch data
-##' @param sigmaproc Process standard deviation.
+##' @param sd.proc Process standard deviation.
 ##' @return A vector of biomass values with the same length as \code{C}
 ##' @author Fernando Mayer
 ##' @examples
 ##' set.seed(1)
 ##' B <- schaefer.gen(r = 0.8, K = 3000, C = runif(20, 70,
-##'     900), sigmaproc = 0.05)
+##'     900), sd.proc = 0.05)
 ##' plot(B, type = "l")
 ##' @export
-schaefer.gen <- function(r, K, C, sigmaproc){
+schaefer.gen <- function(r, K, C, sd.proc){
     n <- length(C)
-    e.proc <- rnorm(n, 0, sigmaproc)
+    e.proc <- rnorm(n, 0, sd.proc)
     B <- numeric(n)
     B[1] <- K * exp(e.proc[1])
     for(i in 2:n){
