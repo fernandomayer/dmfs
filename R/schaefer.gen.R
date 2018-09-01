@@ -3,23 +3,27 @@
 ##' Based in a set of parameters, generate a sequence of biomass values
 ##'     based on the Schaefer model.
 ##' @title Generate biomass values form Schaefer's model
-##' @param Binit Initial biomass
 ##' @param r Intrinsic growth rate
-##' @param K Population's carrying capacity
+##' @param K Population's carrying capacity. This value will also be
+##'     used as starting value for biomass \eqn{B_1} (plus error).
 ##' @param C Observed catch data
+##' @param sigmaproc Process standard deviation.
 ##' @return A vector of biomass values with the same length as \code{C}
 ##' @author Fernando Mayer
 ##' @examples
-##' B <- schaefer.gen(Binit = 2500, r = 0.8, K = 3000, C = runif(20, 70,
-##'     900))
+##' set.seed(1)
+##' B <- schaefer.gen(r = 0.8, K = 3000, C = runif(20, 70,
+##'     900), sigmaproc = 0.05)
 ##' plot(B, type = "l")
 ##' @export
-schaefer.gen <- function(Binit, r, K, C){
+schaefer.gen <- function(r, K, C, sigmaproc){
     n <- length(C)
+    e.proc <- rnorm(n, 0, sigmaproc)
     B <- numeric(n)
-    B[1] <- Binit
+    B[1] <- K * exp(e.proc[1])
     for(i in 2:n){
         B[i] <- (B[i-1] + r * B[i-1] * (1 - (B[i-1]/K))) - C[i-1]
     }
+    B <- B * exp(e.proc)
     return(B)
 }
