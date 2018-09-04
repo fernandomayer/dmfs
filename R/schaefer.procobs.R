@@ -37,7 +37,7 @@ schaefer.procobs <- function(par, B, I, C){
     ansproc <- -sum(dnorm(log(B), log(Bpred), sigmaproc, log = TRUE))
     Ipred <- numeric(n)
     for(i in 1:n){
-        Ipred[i] <- q * Bpred[1]
+        Ipred[i] <- q * Bpred[i]
     }
     ansobs <- -sum(dnorm(log(I), log(Ipred), sigmaobs, log = TRUE))
     res <- ansproc + ansobs
