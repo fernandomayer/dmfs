@@ -139,6 +139,8 @@ fit.mle <- mle2(
 )
 fit.mle
 summary(fit.mle)
+format(fit$par, digits = 4, scientific = FALSE)
+format(fit.mle@coef, digits = 4, scientific = FALSE)
 ## Looks good!
 
 ## Use bbmle profile
