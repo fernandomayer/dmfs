@@ -1,5 +1,6 @@
 ##----------------------------------------------------------------------
 ## Using simulated data
+library(dmfs)
 
 ## Simulate data
 set.seed(123)
@@ -10,6 +11,7 @@ plot(sim)
 (pars <- attr(sim, "pars")[-1])
 
 ## Generate initial biomass values with this set of parameters
+set.seed(1)
 Bobs <- schaefer.gen(r = pars["r"], K = pars["K"],
                      C = sim$C, sd.proc = pars["sd.proc"])
 plot(Bobs, type = "l")
