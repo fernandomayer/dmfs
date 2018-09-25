@@ -106,23 +106,25 @@ data(albacore)
 pars <- c(r = 0.3, K = 300, q = 0.2, sd.obs = 0.01, sd.proc = 0.005)
 plot(albacore$I, ylim = c(0, 100))
 Bobs <- schaefer.gen(r = pars["r"], K = pars["K"],
-                     C = simple$Catch, sd.proc = pars["sd.proc"])
+                     C = albacore$C, sd.proc = pars["sd.proc"])
 ## Scale down biomass to be in same scale as CPUE
 lines(Bobs * pars["q"])
 lines(pars["K"] * albacore$P * pars["q"], col = 2)
-Bobs <- pars["K"] * albacore$P
+## Bobs <- pars["K"] * albacore$P
 
 ## See the nll at this point
 schaefer.procobs(par = pars, B = Bobs,
                  I = albacore$I, C = albacore$C)
 
 ## Minimize nll with nlminb
-fit <- nlminb(start = pars,
-              objective = schaefer.procobs,
-              B = Bobs,
-              I = simple$CPUE, C = simple$Catch,
-              control = list(eval.max = 1000, iter.max = 1000),
-              lower = 0, upper = Inf)
+fit <- nlminb(
+    start = pars,
+    objective = schaefer.procobs,
+    B = Bobs,
+    I = albacore$I, C = albacore$C,
+    control = list(eval.max = 10000, iter.max = 10000, trace = 1),
+    lower = 0, upper = Inf
+)
 fit$par
 format(fit$par, digits = 4, scientific = FALSE)
 
@@ -134,7 +136,7 @@ fit.mle <- mle2(
     start = pars,
     data = list(B = Bobs, I = albacore$I, C = albacore$C),
     optimizer = "nlminb",
-    control = list(eval.max = 1000, iter.max = 1000, trace = 1),
+    control = list(eval.max = 10000, iter.max = 10000, trace = 1),
     lower = c(r = 0, K = 0, q = 0, sigmaproc = 0, sigmaobs = 0),
     upper = c(r = Inf, K = Inf, q = Inf,
               sigmaproc = Inf, sigmaobs = Inf)
