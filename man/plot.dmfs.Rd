@@ -4,7 +4,7 @@
 \alias{plot.dmfs}
 \title{Plot simulated data}
 \usage{
-\method{plot}{dmfs}(x, qscale, ...)
+plot.dmfs(x, qscale, ...)
 }
 \arguments{
 \item{x}{An object of class \code{dmfs}.}

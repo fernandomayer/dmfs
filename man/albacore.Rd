@@ -7,8 +7,9 @@
 \format{A data frame with 23 rows and 4 variables:
 \describe{
   \item{Year}{Year of catch}
-  \item{C}{Catches}
-  \item{I}{CPUE}
+  \item{C}{Catches (1000 t)}
+  \item{E}{Effort (10^8 hooks)}
+  \item{I}{CPUE (kg/100 hooks)}
   \item{P}{P = B/K}
 }}
 \usage{
