@@ -24,3 +24,16 @@
 #'   \item{P}{P = B/K}
 #' }
 "albacore"
+
+#' Namibian hake data
+#'
+#' Northern Namibian hake data.
+#'
+#' @format A data frame with 24 rows and 4 variables:
+#' \describe{
+#'   \item{year}{Year of catch}
+#'   \item{catch}{Catches (1000 t)}
+#'   \item{effort}{Effort}
+#'   \item{cpue}{CPUE}
+#' }
+"hake"
