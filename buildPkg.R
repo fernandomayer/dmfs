@@ -5,7 +5,7 @@
 ##----------------------------------------------------------------------
 ## Packages
 library(devtools)
-library(knitr)
+## library(knitr)
 
 ##----------------------------------------------------------------------
 ## Run checks
@@ -26,7 +26,7 @@ check(manual = TRUE, vignettes = FALSE, check_dir = "../")
 
 ## Examples
 # Run examples from all functions of the package
-run_examples()
+## run_examples()
 # Run examples from a specific function
 # dev_example("yscale.components.right")
 
@@ -48,4 +48,4 @@ install.packages(pkg, repos = NULL)
 
 ##----------------------------------------------------------------------
 ## Generate README.md
-knit(input = "README.Rmd")
+## knit(input = "README.Rmd")

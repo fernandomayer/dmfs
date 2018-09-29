@@ -17,14 +17,14 @@ plot(Bobs, type = "l")
 points(sim$I.procobs/pars["q"])
 
 ## See the nll at this point
-schaefer.procobs(par = pars, B = Bobs,
-                 I = sim$I.procobs, C = sim$C)
+schaefer.procobs2(par = pars, B1 = pars["K"],
+                  I = sim$I.procobs, C = sim$C)
 
 ## Minimize nll with nlminb
 fit <- nlminb(
     start = pars,
-    objective = schaefer.procobs,
-    B = Bobs,
+    objective = schaefer.procobs2,
+    B1 = pars["K"],
     I = sim$I.procobs, C = sim$C,
     control = list(eval.max = 10000, iter.max = 10000, trace = 1),
     lower = 0, upper = Inf
@@ -42,11 +42,11 @@ lines(Ipred)
 ## Using bbmle
 \dontrun{
 library(bbmle)
-parnames(schaefer.procobs) <- names(pars)
+parnames(schaefer.procobs2) <- names(pars)
 fit.mle <- mle2(
-    schaefer.procobs,
+    schaefer.procobs2,
     start = pars,
-    data = list(B = Bobs, I = sim$I.procobs, C = sim$C),
+    data = list(B1 = pars["K"], I = sim$I.procobs, C = sim$C),
     optimizer = "nlminb",
     control = list(eval.max = 10000, iter.max = 10000, trace = 1),
     lower = c(r = 0, K = 0, q = 0, sigmaproc = 0, sigmaobs = 0),
